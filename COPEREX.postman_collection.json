@@ -1,0 +1,313 @@
+{
+	"info": {
+		"_postman_id": "2f875c6e-8efe-4061-a0d0-545d7124f3e0",
+		"name": "COPEREX",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37957136"
+	},
+	"item": [
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Fixed typo in function name\r",
+									"var data = pm.response.json();\r",
+									"postman.setGlobalVariable(\"token\", data.token);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userLogin",
+									"value": "rmartin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Zld3b3Jk_",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:2636/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "LumationService",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Desarrollo de software y soluciones informaticas",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "sales@lumationservices.co",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "47887913",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "2 Avenida 10, Cdad. de Guatemala",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Desarrollo de Software",
+									"type": "text"
+								},
+								{
+									"key": "trajectory",
+									"value": "7 años",
+									"type": "text"
+								},
+								{
+									"key": "impact",
+									"value": "Nacional",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:2636/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "ALumation",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Empresa de cyberseguridad",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "sales@lumation.co",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "47887913",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "2 Avenida 10, Cdad. de Guatemala 0101",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Desarrollo de Software",
+									"type": "text"
+								},
+								{
+									"key": "trajectory",
+									"value": "9 años",
+									"type": "text"
+								},
+								{
+									"key": "impact",
+									"value": "Nacional",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:2636/update/67c50f025a3b1e27ffb03acf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"update",
+								"67c50f025a3b1e27ffb03acf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listByCategory",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:2636/byCategory/Desarrollo de Software",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"byCategory",
+								"Desarrollo de Software"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListbyExperience",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:2636/byTrajectory/9 años",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"byTrajectory",
+								"9 años"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListFromAToZ",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:2636/FromAToZ",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"FromAToZ"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListFromZToA",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:2636/FromZToA",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"FromZToA"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
